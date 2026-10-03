@@ -97,6 +97,8 @@ export const Head: HeadFC = () => (
     <html lang="en" />
     <title>simplydevlab</title>
     <meta name="description" content="Simple apps for everyday problems." />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link
       rel="preload"
       href="/fonts/D-DIN-Bold.woff2"

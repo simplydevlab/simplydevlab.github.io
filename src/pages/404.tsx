@@ -15,4 +15,10 @@ export default function NotFoundPage() {
   );
 }
 
-export const Head: HeadFC = () => <title>Page not found · simplydevlab</title>;
+export const Head: HeadFC = () => (
+  <>
+    <title>Page not found · simplydevlab</title>
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </>
+);
