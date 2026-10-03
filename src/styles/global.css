@@ -1,14 +1,34 @@
-:root {
-  --text: #1c1c1e;
-  --muted: #6e6e73;
-  --background: #ffffff;
+/* D-DIN by Datto, SIL Open Font License 1.1 (see static/fonts/D-DIN-LICENSE.txt). */
+@font-face {
+  font-family: 'D-DIN';
+  src: url('/fonts/D-DIN.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
+@font-face {
+  font-family: 'D-DIN';
+  src: url('/fonts/D-DIN-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The site is always dark: it sits on a night-sky background. */
+:root {
+  color-scheme: dark;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.64);
+  --background: #000000;
+  --surface: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.14);
+  --gutter: 16px;
+}
+
+@media (min-width: 768px) {
   :root {
-    --text: #f2f2f7;
-    --muted: #98989f;
-    --background: #000000;
+    --gutter: 40px;
   }
 }
 
@@ -20,22 +40,295 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--text);
-  font: 17px/1.55 -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  font: 17px/1.6 'D-DIN', 'Helvetica Neue', Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
-main {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 48px 16px 64px;
+h1,
+h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-h1 {
-  font-size: 32px;
-  line-height: 1.2;
-  margin: 0 0 8px;
+p {
+  margin: 0 0 16px;
+}
+
+a {
+  color: var(--text);
 }
 
 .muted {
   color: var(--muted);
+}
+
+/* Night sky: the canvas draws the stars over a fixed nebula gradient. */
+.starfield {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 10% 95%, rgba(118, 58, 160, 0.38), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 95% 10%, rgba(38, 72, 168, 0.32), transparent 70%),
+    radial-gradient(ellipse 80% 40% at 60% 110%, rgba(214, 106, 84, 0.2), transparent 70%),
+    var(--background);
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.site-header {
+  padding: 28px 0;
+}
+
+.wordmark {
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+}
+
+.hero {
+  min-height: calc(100svh - 82px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 16vh;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 76px);
+  line-height: 1.02;
+  max-width: 12em;
+  text-wrap: balance;
+  margin: 0 0 20px;
+}
+
+.lead {
+  font-size: clamp(18px, 2.4vw, 22px);
+  max-width: 34ch;
+  color: var(--muted);
+}
+
+.status {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+}
+
+.status:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.status::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #7cf0b0;
+  box-shadow: 0 0 10px #7cf0b0;
+  vertical-align: 1px;
+}
+
+.card {
+  max-width: 880px;
+  padding: 32px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 40px;
+  }
+}
+
+.section-title {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.about p {
+  max-width: 60ch;
+}
+
+.profile,
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 6px;
+}
+
+.role {
+  margin: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 14px 32px;
+  border: 2px solid var(--text);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--text);
+  color: var(--background);
+}
+
+.button-solid {
+  background: var(--text);
+  color: var(--background);
+}
+
+.button-solid:hover,
+.button-solid:focus-visible {
+  background: transparent;
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Full-width buttons on phones, side by side once there's room. */
+.actions .button {
+  flex: 1 1 180px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .actions .button {
+    flex: 0 0 auto;
+  }
+}
+
+.app {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .app {
+    grid-template-columns: 1fr 240px;
+    align-items: center;
+    gap: 56px;
+  }
+}
+
+.app-icon {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+}
+
+.app-meta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.phone {
+  justify-self: center;
+  width: 220px;
+  padding: 6px;
+  border-radius: 36px;
+  background: #1c1c1e;
+  box-shadow: 0 0 0 1px var(--border), 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+.site-footer {
+  padding: 96px 0 40px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+/* Simple centered layout for secondary pages such as the 404. */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px var(--gutter) 64px;
+}
+
+main h1 {
+  font-size: 36px;
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+
+@media (max-width: 420px) {
+  .avatar {
+    width: 88px;
+    height: 88px;
+  }
 }

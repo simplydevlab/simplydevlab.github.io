@@ -3,7 +3,7 @@ import type { GatsbyConfig } from 'gatsby';
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'simplydevlab',
-    description: 'Simple apps that keep your data on your device.',
+    description: 'Simple apps for everyday problems.',
     siteUrl: 'https://simplydevlab.github.io',
   },
   // Served from the root of simplydevlab.github.io, so no pathPrefix.
