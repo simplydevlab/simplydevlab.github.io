@@ -51,7 +51,7 @@ export default function IndexPage() {
           <div className="phone">
             <img
               src={simplyDoneScreenshot}
-              alt="SimplyDone's main screen in dark mode, with pinned and active lists in color groups"
+              alt="SimplyDone's main screen in dark mode, with the tasks-done and streak card above pinned and active lists in color groups"
               width={660}
               height={1434}
               loading="lazy"
