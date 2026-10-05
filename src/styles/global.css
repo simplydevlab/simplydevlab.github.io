@@ -312,7 +312,7 @@ a {
 }
 
 /* Simple centered layout for secondary pages such as the 404. */
-main {
+.centered {
   position: relative;
   z-index: 1;
   max-width: 680px;
@@ -320,7 +320,7 @@ main {
   padding: 96px var(--gutter) 64px;
 }
 
-main h1 {
+.centered h1 {
   font-size: 36px;
   line-height: 1.1;
   margin: 0 0 12px;
