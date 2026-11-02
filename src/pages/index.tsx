@@ -65,7 +65,7 @@ export default function IndexPage() {
             <h1>Simple apps for everyday problems</h1>
             <p className="lead">A software lab building focused, practical apps.</p>
             <a className="status" href="#apps">
-              SimplyDone is out now on the App Store
+              SimplyDone 2.0 is out now on the App Store
             </a>
           </section>
 
@@ -82,7 +82,7 @@ export default function IndexPage() {
                 </div>
               </div>
               <p>Lists, tasks, reminders and routines, kept simple.</p>
-              <p className="app-meta">Free · iPhone and iPad · Pro is a one-time purchase</p>
+              <p className="app-meta">Free · iPhone and iPad · Remove ads with a one-time purchase</p>
               <div className="actions">
                 <a className="button button-solid" href={SIMPLYDONE_APP_STORE_URL}>
                   App Store
@@ -95,9 +95,9 @@ export default function IndexPage() {
             <div className="phone">
               <img
                 src={simplyDoneScreenshot}
-                alt="SimplyDone's main screen in dark mode, with the tasks-done and streak card above pinned and active lists in color groups"
+                alt="SimplyDone's main screen in dark mode, with this week's tasks done by group and the streak above pinned and active lists as tiles"
                 width={660}
-                height={1434}
+                height={1435}
                 loading="lazy"
               />
             </div>
