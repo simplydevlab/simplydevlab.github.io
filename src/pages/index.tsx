@@ -65,7 +65,7 @@ export default function IndexPage() {
             <h1>Simple apps for everyday problems</h1>
             <p className="lead">A software lab building focused, practical apps.</p>
             <a className="status" href="#apps">
-              SimplyDone 2.1 is out now, with notes
+              SimplyDone 2.2 is out now, with note folders
             </a>
           </section>
 
